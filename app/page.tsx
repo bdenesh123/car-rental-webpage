@@ -1,6 +1,22 @@
 import { CustomFilter, Hero, SearchBar } from "@/components";
+import { fuels, yearsOfProduction } from "@/constants";
+import { HomeProps } from "@/types";
+import { fetchCarsDirect } from "@/utils/fetchCars";
 
-export default function Home() {
+export default async function Home({ searchParams }: HomeProps) {
+  const search = await searchParams;
+
+  const allCars = fetchCarsDirect({
+    manufacturer: search.manufacturer ?? "",
+    model: search.model ?? "",
+    year: search.year ?? "",
+    fuel: search.fuel ?? "",
+  });
+
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length === 0;
+
+  console.log(allCars);
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -13,11 +29,6 @@ export default function Home() {
 
         <div className="home__filters">
           <SearchBar />
-
-          <div className="home__filter-container">
-            <CustomFilter />
-            <CustomFilter />
-          </div>
         </div>
       </div>
     </main>

@@ -18,6 +18,7 @@ const SearchManufacturer = ({
   setManuFacturer,
 }: SearchManuFacturerProps) => {
   const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const filteredManufacturers =
     query === ""
@@ -33,7 +34,10 @@ const SearchManufacturer = ({
     <div className="search-manufacturer">
       <Combobox value={manufacturer} onChange={setManuFacturer}>
         <div className="relative w-full">
-          <ComboboxButton className="absolute top-[14px]">
+          <ComboboxButton
+            className="absolute top-[14px] "
+            onClick={() => setIsOpen(true)}
+          >
             <Image
               src="/car-logo.svg"
               width={20}
@@ -47,11 +51,14 @@ const SearchManufacturer = ({
             className="search-manufacturer__input"
             displayValue={(item: string) => item || ""}
             onChange={(event) => setQuery(event.target.value)}
+            onFocus={() => setIsOpen(true)}
+            onBlur={() => setTimeout(() => setIsOpen(false), 150)}
             placeholder="Volkswagen..."
           />
 
           <Transition
             as={Fragment}
+            show={isOpen}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
@@ -78,6 +85,7 @@ const SearchManufacturer = ({
                       }`
                     }
                     value={item}
+                    onClick={() => setIsOpen(false)}
                   >
                     {({ selected, active }) => (
                       <>

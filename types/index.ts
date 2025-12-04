@@ -17,14 +17,13 @@ export interface CarProps {
 
 export interface FilterProps {
   manufacturer?: string;
-  year?: number;
+  year?: string;
   model?: string;
-  limit?: number;
   fuel?: string;
 }
 
 export interface HomeProps {
-  searchParams: FilterProps;
+  searchParams: FilterProps | Promise<FilterProps>;
 }
 
 export interface CarCardProps {
