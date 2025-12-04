@@ -1,18 +1,17 @@
 import { MouseEventHandler } from "react";
 
 export interface CarProps {
-  city_mpg: number;
-  class: string;
-  combination_mpg: number;
-  cylinders: number;
-  displacement: number;
-  drive: string;
-  fuel_type: string;
-  highway_mpg: number;
   make: string;
   model: string;
-  transmission: string;
   year: number;
+  fuel: string;
+  transmission: string;
+  class: "sedan" | "suv" | "hatchback" | "electric";
+  seats: number;
+  image: string;
+  city_kmpl: number;
+  combined_kmpl: number;
+  highway_kmpl: number;
 }
 
 export interface FilterProps {
@@ -27,13 +26,7 @@ export interface HomeProps {
 }
 
 export interface CarCardProps {
-  model: string;
-  make: string;
-  mpg: number;
-  transmission: string;
-  year: number;
-  drive: string;
-  cityMPG: number;
+  car: CarProps;
 }
 
 export interface CustomButtonProps {
