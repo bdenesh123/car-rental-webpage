@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment } from "react";
 import Image from "next/image";
 
@@ -8,7 +10,6 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { CarProps } from "@/types";
-import { generateCarImageUrl } from "@/utils";
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -16,16 +17,16 @@ interface CarDetailsProps {
   car: CarProps;
 }
 
-const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => (
-  <>
+const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+  return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <TransitionChild
           as={Fragment}
-          enter="ease-out duration-300"
+          enter="ease-out duration-200"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -36,10 +37,10 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => (
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <TransitionChild
               as={Fragment}
-              enter="ease-out duration-300"
+              enter="ease-out duration-200"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"
-              leave="ease-out duration-300"
+              leave="ease-out duration-200"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
@@ -59,68 +60,106 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => (
                   />
                 </button>
 
-                {/* Fixed Top Images */}
-                <div className="flex flex-col gap-3">
-                  {/* Main Car Image */}
-                  <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
-                    <Image
-                      src={generateCarImageUrl(car)}
-                      alt="car model"
-                      fill
-                      priority
-                      className="object-contain"
-                    />
-                  </div>
-
-                  {/* Thumbnail Images */}
-                  <div className="flex gap-3">
-                    <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
-                      <Image
-                        src={generateCarImageUrl(car, "29")}
-                        alt="car model"
-                        fill
-                        priority
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
-                      <Image
-                        src={generateCarImageUrl(car, "33")}
-                        alt="car model"
-                        fill
-                        priority
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
-                      <Image
-                        src={generateCarImageUrl(car, "13")}
-                        alt="car model"
-                        fill
-                        priority
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
+                {/* Main Car Image */}
+                <div className="relative w-full h-40  bg-cover bg-center rounded-lg">
+                  <Image
+                    src={car.images.main}
+                    alt={`${car.make} ${car.model}`}
+                    fill
+                    priority
+                    className="object-contain"
+                  />
                 </div>
 
+                {/* Car Info */}
                 <div className="flex-1 overflow-y-auto mt-3 pr-1">
                   <h2 className="font-semibold text-xl capitalize">
                     {car.make} {car.model}
                   </h2>
 
                   <div className="flex flex-col gap-4 mt-3">
-                    {Object.entries(car).map(([key, value]) => (
-                      <div
-                        className="flex justify-between gap-5 w-full text-right"
-                        key={key}
-                      >
-                        <h4 className="text-grey capitalize">
-                          {key.split("_").join(" ")}
-                        </h4>
-                        <p className="text-black-100 font-semibold">{value}</p>
-                      </div>
-                    ))}
+                    <div className="flex justify-between">
+                      <span className="text-grey">Year</span>
+                      <span className="font-semibold">{car.year}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Fuel</span>
+                      <span className="font-semibold capitalize">
+                        {car.fuel}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Class</span>
+                      <span className="font-semibold capitalize">
+                        {car.class}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Transmission</span>
+                      <span className="font-semibold">{car.transmission}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Seats</span>
+                      <span className="font-semibold">{car.seats}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Drive</span>
+                      <span className="font-semibold">
+                        {car.drive.toUpperCase()}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Fuel Economy</span>
+                      <span className="font-semibold">{car.fuelEconomy}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Boot Space</span>
+                      <span className="font-semibold">{car.bootSpace}</span>
+                    </div>
+
+                    {/* <div className="flex justify-between">
+                      <span className="text-grey">Length</span>
+                      <span className="font-semibold">{car.length}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Width</span>
+                      <span className="font-semibold">{car.width}</span>
+                    </div> */}
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Airbags</span>
+                      <span className="font-semibold">{car.airbags}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Fuel Tank Capacity</span>
+                      <span className="font-semibold">
+                        {car.fuelTankCapacity}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Horsepower</span>
+                      <span className="font-semibold">{car.horsepower}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">Torque</span>
+                      <span className="font-semibold">{car.torque}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-grey">0-100 km/h</span>
+                      <span className="font-semibold">{car.acceleration}</span>
+                    </div>
                   </div>
                 </div>
               </DialogPanel>
@@ -129,7 +168,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => (
         </div>
       </Dialog>
     </Transition>
-  </>
-);
+  );
+};
 
 export default CarDetails;

@@ -10,12 +10,9 @@ export default async function Home({ searchParams }: HomeProps) {
 
   const allCars = fetchCarsDirect({
     manufacturer: search.manufacturer ?? "",
-    model: search.model ?? "",
-    year: search.year ?? "",
-    fuel: search.fuel ?? "",
   });
 
-  const isDataEmpty = !Array.isArray(allCars) || allCars.length === 0;
+  const isDataEmpty = !(allCars?.length > 0);
 
   return (
     <main className="overflow-hidden">

@@ -1,21 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import SearchManufacturer from "./SearchManufacturer";
 
 const SearchBar = () => {
-  const [manufacturer, setManuFacturer] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const handleSearch = () => {};
+  const [manufacturer, setManuFacturer] = useState(
+    searchParams.get("manufacturer") || ""
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (manufacturer) {
+      params.set("manufacturer", manufacturer);
+    } else {
+      params.delete("manufacturer");
+    }
+
+    router.push(`/?${params.toString()}`, { scroll: false });
+  }, [manufacturer]);
 
   return (
-    <form className="SearchBar" onSubmit={handleSearch}>
-      <div className="searchbar__item"></div>
-      <SearchManufacturer
-        manufacturer={manufacturer}
-        setManuFacturer={setManuFacturer}
-      />
-    </form>
+    <div className="SearchBar">
+      <div className="searchbar__item">
+        <SearchManufacturer
+          manufacturer={manufacturer}
+          setManuFacturer={setManuFacturer}
+        />
+      </div>
+    </div>
   );
 };
 

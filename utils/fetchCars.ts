@@ -10,20 +10,12 @@ interface FilterProps {
 
 export function fetchCarsDirect({
   manufacturer = "",
-  model = "",
-  year = "",
-  fuel = "",
-  classType = "",
-}: FilterProps) {
-  return cars.filter((car: Car) => {
-    return (
-      (manufacturer
-        ? car.make.toLowerCase() === manufacturer.toLowerCase()
-        : true) &&
-      (model ? car.model.toLowerCase().includes(model.toLowerCase()) : true) &&
-      (year ? car.year === Number(year) : true) &&
-      (fuel ? car.fuel.toLowerCase() === fuel.toLowerCase() : true) &&
-      (classType ? car.class === classType : true)
-    );
+}: {
+  manufacturer?: string;
+}) {
+  return cars.filter((car) => {
+    return manufacturer
+      ? car.make.toLowerCase() === manufacturer.toLowerCase()
+      : true;
   });
 }

@@ -1,7 +1,7 @@
 import { CarProps, FilterProps } from "@types";
 
 export const calculateCarRentPerHour = (car: CarProps) => {
-  const { city_kmpl, year, class: carClass } = car;
+  const { year, class: carClass } = car;
   const currentYear = new Date().getFullYear();
 
   let basePricePerDay = 0;
@@ -22,45 +22,16 @@ export const calculateCarRentPerHour = (car: CarProps) => {
       basePricePerDay = 100;
   }
 
-  const efficiencyAdjustment = (12 - city_kmpl) * 2;
   const ageAdjustment = (currentYear - year) * 3;
 
-  const rentalPerDay = basePricePerDay + ageAdjustment - efficiencyAdjustment;
+  const rentalPerDay = basePricePerDay + ageAdjustment;
 
   const rentalPerHour = rentalPerDay / 24;
 
   return rentalPerHour.toFixed(2);
 };
 
-// export const updateSearchParams = (type: string, value: string) => {
-//   // Get the current URL search params
-//   const searchParams = new URLSearchParams(window.location.search);
-
-//   // Set the specified search parameter to the given value
-//   searchParams.set(type, value);
-
-//   // Set the specified search parameter to the given value
-//   const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
-
-//   return newPathname;
-// };
-
-// export const deleteSearchParams = (type: string) => {
-//   // Set the specified search parameter to the given value
-//   const newSearchParams = new URLSearchParams(window.location.search);
-
-//   // Delete the specified search parameter
-//   newSearchParams.delete(type.toLocaleLowerCase());
-
-//   // Construct the updated URL pathname with the deleted search parameter
-//   const newPathname = `${
-//     window.location.pathname
-//   }?${newSearchParams.toString()}`;
-
-//   return newPathname;
-// };
-
-export const generateCarImageUrl = (car: CarProps, angle: string = "front") => {
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL("https://cdn.imagin.studio/getimage");
   const { make, model, year } = car;
 
@@ -72,7 +43,8 @@ export const generateCarImageUrl = (car: CarProps, angle: string = "front") => {
   url.searchParams.append("modelFamily", model.split(" ")[0]);
   url.searchParams.append("zoomType", "fullscreen");
   url.searchParams.append("modelYear", `${year}`);
-  url.searchParams.append("angle", angle);
+  // url.searchParams.append('zoomLevel', zoomLevel);
+  url.searchParams.append("angle", `${angle}`);
 
-  return url.toString();
+  return `${url}`;
 };

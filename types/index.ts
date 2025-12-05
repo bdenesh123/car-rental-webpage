@@ -8,10 +8,19 @@ export interface CarProps {
   transmission: string;
   class: "sedan" | "suv" | "hatchback" | "electric";
   seats: number;
-  image: string;
-  city_kmpl: number;
-  combined_kmpl: number;
-  highway_kmpl: number;
+  images: {
+    main: string;
+  };
+  drive: string;
+  fuelEconomy: string;
+  bootSpace: string;
+  topSpeed: string;
+  acceleration: string;
+  engine: string;
+  horsepower: string;
+  torque: string;
+  fuelTankCapacity: string;
+  airbags: number;
 }
 
 export interface FilterProps {
