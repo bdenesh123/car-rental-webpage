@@ -1,7 +1,5 @@
-import { CustomFilter, Hero, SearchBar } from "@/components";
+import { Hero, SearchBar } from "@/components";
 import CarCard from "@/components/CarCard";
-import ShowMore from "@/components/ShowMore";
-import { fuels, yearsOfProduction } from "@/constants";
 import { HomeProps } from "@/types";
 import { fetchCarsDirect } from "@/utils/fetchCars";
 
@@ -26,11 +24,6 @@ export default async function Home({ searchParams }: HomeProps) {
 
         <div className="home__filters">
           <SearchBar />
-
-          <div className="home__filter-container">
-            <CustomFilter title="fuel" options={fuels} />
-            <CustomFilter title="year" options={yearsOfProduction} />
-          </div>
         </div>
 
         {!isDataEmpty ? (
@@ -40,11 +33,6 @@ export default async function Home({ searchParams }: HomeProps) {
                 <CarCard key={index} car={car} />
               ))}
             </div>
-
-            {/* <ShowMore
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) > allCars.length}
-            /> */}
           </section>
         ) : (
           <div className="home__error-container">

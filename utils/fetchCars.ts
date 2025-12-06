@@ -2,10 +2,6 @@ import { cars, Car } from "@/constants/cars";
 
 interface FilterProps {
   manufacturer?: string;
-  model?: string;
-  year?: string;
-  fuel?: string;
-  classType?: string;
 }
 
 export function fetchCarsDirect({
