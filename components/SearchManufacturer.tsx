@@ -31,32 +31,27 @@ const SearchManufacturer = ({
         );
 
   return (
-    <div className="search-manufacturer">
+    <div className="search-manufacturer w-full relative">
       <Combobox
         value={manufacturer}
         onChange={(value: string | null) => setManuFacturer(value ?? "")}
       >
         <div className="relative w-full">
           <ComboboxButton
-            className="absolute top-[14px] "
+            className="absolute top-1/2 -translate-y-1/2 left-3"
             onClick={() => setIsOpen(true)}
           >
-            <Image
-              src="/car-logo.svg"
-              width={20}
-              height={20}
-              className="ml-4"
-              alt="car logo"
-            />
+            <Image src="/car-logo.svg" width={20} height={20} alt="car logo" />
           </ComboboxButton>
 
           <ComboboxInput
-            className="search-manufacturer__input"
+            className="search-manufacturer__input text-base sm:text-lg"
             displayValue={(item: string) => item || ""}
             onChange={(event) => setQuery(event.target.value)}
             onFocus={() => setIsOpen(true)}
             onBlur={() => setTimeout(() => setIsOpen(false), 150)}
             placeholder="Volkswagen..."
+            style={{ fontSize: "16px" }} // prevents mobile zoom
           />
 
           <Transition
@@ -68,7 +63,7 @@ const SearchManufacturer = ({
             afterLeave={() => setQuery("")}
           >
             <ComboboxOptions
-              className=" mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+              className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
               static
             >
               {filteredManufacturers.length === 0 && query !== "" ? (
@@ -90,26 +85,14 @@ const SearchManufacturer = ({
                     value={item}
                     onClick={() => setIsOpen(false)}
                   >
-                    {({ selected, active }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
-                          }`}
-                        >
-                          {item}
-                        </span>
-
-                        {selected ? (
-                          <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                              active
-                                ? "text-white"
-                                : "text-pribg-primary-purple"
-                            }`}
-                          ></span>
-                        ) : null}
-                      </>
+                    {({ selected }) => (
+                      <span
+                        className={`block truncate ${
+                          selected ? "font-medium" : "font-normal"
+                        }`}
+                      >
+                        {item}
+                      </span>
                     )}
                   </ComboboxOption>
                 ))
