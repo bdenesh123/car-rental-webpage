@@ -6,6 +6,9 @@ import { Footer, NavBar } from "@/components";
 export const metadata: Metadata = {
   title: "SewaCar",
   description: "Best Car Rental Service in Town",
+  icons: {
+    icon: "/logo2.png",
+  },
 };
 
 export default function RootLayout({
