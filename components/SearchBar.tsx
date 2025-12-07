@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import SearchManufacturer from "./SearchManufacturer";
+import SearchManufacturerDropdown from "./SearchManufacturer";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const SearchBar = () => {
     searchParams.get("manufacturer") || ""
   );
 
-  useEffect(() => {
+  const handleSearch = () => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (manufacturer) {
@@ -22,16 +22,20 @@ const SearchBar = () => {
     }
 
     router.push(`/?${params.toString()}`, { scroll: false });
-  }, [manufacturer]);
+  };
 
   return (
-    <div className="SearchBar">
-      <div className="searchbar__item">
-        <SearchManufacturer
-          manufacturer={manufacturer}
-          setManuFacturer={setManuFacturer}
-        />
-      </div>
+    <div className="searchbar__item flex gap-2 w-full max-w-sm">
+      <SearchManufacturerDropdown
+        manufacturer={manufacturer}
+        setManuFacturer={setManuFacturer}
+      />
+      <button
+        onClick={handleSearch}
+        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition cursor-pointer"
+      >
+        Search
+      </button>
     </div>
   );
 };
