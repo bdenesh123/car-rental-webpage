@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => (
   <footer className="bg-gray-50 dark:bg-zinc-900 border-t border-gray-200 dark:border-gray-700 mt-16">
@@ -26,7 +26,7 @@ const Footer = () => (
           rel="noopener noreferrer"
           className="hover:text-green-600 transition"
         >
-          <FaTwitter size={20} />
+          <FaYoutube size={20} />
         </a>
         <a
           href="#"
