@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full bg-gradient-to-r from-green-600 to-emerald-500 text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 py-20 md:py-32 gap-12 md:gap-20">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 py-12 md:py-20 pb-32 md:pb-24 gap-12 md:gap-20">
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
@@ -45,6 +45,7 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Bottom curve */}
       <div className="absolute -bottom-20 left-0 w-full h-40 bg-emerald-700/30 rounded-t-full"></div>
     </section>
   );

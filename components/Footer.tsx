@@ -1,44 +1,44 @@
-import { footerLinks } from "@/constants";
-import Image from "next/image";
-import Link from "next/link";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="flex flex-col text-black-100  mt-5 border-t border-gray-100">
-    <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
-      <div className="flex flex-col justify-start items-start gap-6">
-        <h1 className="text-2xl font-bold text-gray-900">SewaCar</h1>
-        <p className="text-base text-gray-700">
-          SewaCar 2025 <br />
-          All Rights Reserved &copy;
-        </p>
-      </div>
+  <footer className="bg-gray-50 dark:bg-zinc-900 border-t border-gray-200 dark:border-gray-700 mt-16">
+    <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between w-full">
+      {/* Brand on the left */}
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        SewaCar
+      </h1>
 
-      <div className="footer__links">
-        {footerLinks.map((item) => (
-          <div key={item.title} className="footer__link">
-            <h3 className="font-bold">{item.title}</h3>
-            <div className="flex flex-col gap-5">
-              {item.links.map((link) => (
-                <Link
-                  key={link.title}
-                  href={link.url}
-                  className="text-gray-500"
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      {/* Tagline in the middle */}
+      <p className="text-gray-600 dark:text-gray-400 text-base">
+        Your trusted car rental platform
+      </p>
 
-    <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
-      <p>@2025 SewaCar. All rights reserved</p>
-
-      <div className="footer__copyrights-link">
-        <p className="text-gray-500">Privacy & Policy</p>
-        <p className="text-gray-500">Terms & Condition</p>
+      {/* Social media icons on the right */}
+      <div className="flex gap-4 text-gray-600 dark:text-gray-400">
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-600 transition"
+        >
+          <FaFacebook size={20} />
+        </a>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-600 transition"
+        >
+          <FaTwitter size={20} />
+        </a>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-600 transition"
+        >
+          <FaInstagram size={20} />
+        </a>
       </div>
     </div>
   </footer>
