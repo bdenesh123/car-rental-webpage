@@ -7,16 +7,14 @@ import CustomButton from "./CustomButton";
 const Hero = () => {
   const handleScroll = () => {
     const element = document.getElementById("discover");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative w-full bg-gradient-to-r from-green-600 to-emerald-500 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 py-20 md:py-32 gap-12 md:gap-20">
         {/* Left Content */}
-        <div className="flex-1 text-center md:text-left">
+        <div className="flex-1 text-center md:text-left z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
             Rent Your Dream Car <br /> Anytime, Anywhere
           </h1>
@@ -25,7 +23,6 @@ const Hero = () => {
             rentals, and total convenience.
           </p>
 
-          {/* Center button on mobile, left-aligned on desktop */}
           <div className="mt-10 flex justify-center md:justify-start">
             <CustomButton
               title="Explore Cars"
@@ -37,20 +34,17 @@ const Hero = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex-1 w-full h-64 sm:h-72 md:h-96 lg:h-[28rem]">
-          <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src="/hero1.png"
-              alt="hero car"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
-          </div>
+        <div className="flex-1 flex justify-center md:justify-end">
+          <Image
+            src="/hero1.png"
+            alt="hero car"
+            width={500}
+            height={300}
+            className="object-contain h-auto md:w-[550px] lg:w-[650px]"
+          />
         </div>
       </div>
 
-      {/* Decorative Shape */}
       <div className="absolute -bottom-20 left-0 w-full h-40 bg-emerald-700/30 rounded-t-full"></div>
     </section>
   );
