@@ -19,8 +19,8 @@ const Hero = () => {
             Rent Your Dream Car <br /> Anytime, Anywhere
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white/90 max-w-md mx-auto md:mx-0">
-            Explore the best cars in your city with fast booking, flexible
-            rentals, and total convenience.
+            Explore the best cars in KL with fast booking, flexible rentals, and
+            total convenience.
           </p>
 
           <div className="mt-10 flex justify-center md:justify-start">
