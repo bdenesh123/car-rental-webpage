@@ -4,7 +4,7 @@ import "./globals.css";
 import { Footer, NavBar } from "@/components";
 
 export const metadata: Metadata = {
-  title: "GoDrive",
+  title: "SewaCar",
   description: "Best Car Rental Service in Town",
 };
 
