@@ -5,12 +5,12 @@ export interface Car {
   fuel: string;
   transmission: string;
   seats: number;
+  class: "sedan" | "suv" | "hatchback" | "electric";
+  fuelEconomy: string;
+  drive: string;
   images: {
     main: string;
   };
-  class: "sedan" | "suv" | "hatchback" | "electric";
-  fuelEconomy: string;
-  drive: "fwd" | "rwd" | "awd";
   horsepower: string;
   torque: string;
   bootSpace: string;

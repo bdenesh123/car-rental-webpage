@@ -1,34 +1,19 @@
-import { CarProps, FilterProps } from "@types";
+import { Car } from "@/constants/cars";
+import { CarProps } from "@/types";
 
-export const calculateCarRentPerHour = (car: CarProps) => {
-  const { year, class: carClass } = car;
-  const currentYear = new Date().getFullYear();
+export const calculateCarRentPerHour = (car: Car) => {
+  // Extract numeric HP from string like "120 hp"
+  const hp = parseInt(car.horsepower);
 
-  let basePricePerDay = 0;
-  switch (carClass) {
-    case "hatchback":
-      basePricePerDay = 80;
-      break;
-    case "sedan":
-      basePricePerDay = 120;
-      break;
-    case "suv":
-      basePricePerDay = 180;
-      break;
-    case "electric":
-      basePricePerDay = 200;
-      break;
-    default:
-      basePricePerDay = 100;
-  }
+  let pricePerHour = 0;
 
-  const ageAdjustment = (currentYear - year) * 3;
+  if (hp <= 80) pricePerHour = 6;
+  else if (hp <= 110) pricePerHour = 10;
+  else if (hp <= 150) pricePerHour = 15;
+  else if (hp <= 200) pricePerHour = 22;
+  else pricePerHour = 30;
 
-  const rentalPerDay = basePricePerDay + ageAdjustment;
-
-  const rentalPerHour = rentalPerDay / 24;
-
-  return rentalPerHour.toFixed(2);
+  return pricePerHour.toFixed(2); // returns string like "15.00"
 };
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {

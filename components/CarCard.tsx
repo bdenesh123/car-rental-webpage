@@ -4,16 +4,17 @@ import { useState } from "react";
 import Image from "next/image";
 
 import CustomButton from "./CustomButton";
-import { CarProps } from "@/types";
-import { calculateCarRentPerHour, generateCarImageUrl } from "@/utils";
+
+import { calculateCarRentPerHour } from "@/utils";
 import CarDetails from "./CarDetails";
+import { Car } from "@/constants/cars";
 
 interface CarCardProps {
-  car: CarProps;
+  car: Car;
 }
 
 const CarCard = ({ car }: CarCardProps) => {
-  const { city_kmpl, year, make, model, transmission, drive } = car;
+  const { year, make, model, transmission, drive, fuelEconomy, images } = car;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,6 +26,7 @@ const CarCard = ({ car }: CarCardProps) => {
         <h2 className="car-card__content-title">
           {make} {model}
         </h2>
+        <p className="text-sm text-gray-500">{year}</p>
       </div>
 
       <p className="flex mt-6 text-[32px] leading-[38px] font-extrabold">
@@ -39,8 +41,8 @@ const CarCard = ({ car }: CarCardProps) => {
 
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={car.images.main}
-          alt={`${car.make} ${car.model}`}
+          src={images.main}
+          alt={`${make} ${model}`}
           fill
           priority
           className="object-contain"
@@ -58,13 +60,15 @@ const CarCard = ({ car }: CarCardProps) => {
             />
             <p className="text-[14px] leading-[17px]">{transmission}</p>
           </div>
+
           <div className="car-card__icon">
-            <Image src="/tire.svg" width={20} height={20} alt="seat" />
+            <Image src="/tire.svg" width={20} height={20} alt="drive" />
             <p className="car-card__icon-text">{drive.toUpperCase()}</p>
           </div>
+
           <div className="car-card__icon">
-            <Image src="/gas.svg" width={20} height={20} alt="seat" />
-            <p className="car-card__icon-text">{city_kmpl} km/L</p>
+            <Image src="/gas.svg" width={20} height={20} alt="fuel" />
+            <p className="car-card__icon-text">{fuelEconomy}</p>
           </div>
         </div>
 

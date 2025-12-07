@@ -8,7 +8,7 @@ export function fetchCarsDirect({
   manufacturer = "",
 }: {
   manufacturer?: string;
-}) {
+}): Car[] {
   return cars.filter((car) => {
     return manufacturer
       ? car.make.toLowerCase() === manufacturer.toLowerCase()
