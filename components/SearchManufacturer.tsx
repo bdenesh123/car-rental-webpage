@@ -18,12 +18,14 @@ interface Props {
 const SearchManufacturer = ({ manufacturer, setManuFacturer }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Add "All Cars" as an option
   const options = ["All Cars", ...manufacturers];
 
   return (
     <div className="w-full relative">
-      <Combobox value={manufacturer || "All Cars"} onChange={setManuFacturer}>
+      <Combobox
+        value={manufacturer || "All Cars"}
+        onChange={(value: string | null) => setManuFacturer(value ?? "")}
+      >
         <div className="relative w-full">
           <ComboboxButton
             className="w-full flex justify-between items-center border border-gray-300 rounded-lg px-3 py-2 cursor-pointer bg-white text-gray-900"
