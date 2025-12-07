@@ -9,12 +9,12 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { CarProps } from "@/types";
+import { Car } from "@/constants/cars";
 
 interface CarDetailsProps {
   isOpen: boolean;
   closeModal: () => void;
-  car: CarProps;
+  car: Car;
 }
 
 const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
