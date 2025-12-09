@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚗 SewaCar – User Website
 
-## Getting Started
+SewaCar is a modern car rental user-facing web application built with Next.js, React, and TypeScript. It allows users to explore available cars, view details, and interact with a clean, fast, and responsive interface.
 
-First, run the development server:
+This repository contains the user website (not the admin dashboard).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+⚡ Built with Next.js App Router for fast performance
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🧭 Smooth navigation with modern UI components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📱 Fully responsive design
 
-## Learn More
+🎨 Styled with Tailwind CSS
 
-To learn more about Next.js, take a look at the following resources:
+🧩 Accessible UI via Headless UI
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+✅ Type-safe development using TypeScript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🌙 Clean and minimal user experience
 
-## Deploy on Vercel
+🛠 Tech Stack
+Core Framework
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js 16
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+React 19
+
+TypeScript
+
+Styling & UI
+
+Tailwind CSS v4
+
+@headlessui/react
+
+react-icons
+
+📁 Project Purpose
+
+This project serves as:
+
+✅ A real-world frontend portfolio project
+
+✅ A user-facing car rental platform
+
+✅ A foundation for future features such as:
+
+Booking system
+
+User authentication
+
+Payment integration
